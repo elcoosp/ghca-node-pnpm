@@ -1,0 +1,29 @@
+name: Setup node, pnpm and install
+description: Github composite action to install node & pnpm (with cache) then run install (with frozen lockfile)
+inputs:
+  node-version:
+    description: Node version
+    required: false
+    default: 22
+  pnpm-version:
+    description: Pnpm version
+    required: false
+    default: 9
+runs:
+  using: composite
+  steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        version: ${{ inputs.pnpm-version }}
+    - name: Setup node.js environment
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: "pnpm"
+    - name: Install
+      run: pnpm install --frozen-lockfile
