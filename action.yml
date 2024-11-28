@@ -1,5 +1,5 @@
 name: Setup node, pnpm and install
-description: Github composite action to install node & pnpm (with cache) then run install (with frozen lockfile)
+description: Github composite action to checkout, install node & pnpm (with cache) then run install (with frozen lockfile)
 inputs:
   node-version:
     description: Node version
@@ -27,3 +27,4 @@ runs:
         cache: "pnpm"
     - name: Install
       run: pnpm install --frozen-lockfile
+      shell: bash

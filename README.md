@@ -2,5 +2,5 @@
 
 ## About
 
-Github composite action to install node & pnpm (with cache) then run install
-(with frozen lockfile)
+Github composite action to checkout, install node & pnpm (with cache) then run
+install (with frozen lockfile)
