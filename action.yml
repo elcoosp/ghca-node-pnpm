@@ -9,6 +9,14 @@ inputs:
     description: Pnpm version
     required: false
     default: 9
+  deno-enabled:
+    description: Deno enabled
+    required: false
+    default: false
+  deno-version:
+    description: Deno version
+    required: false
+    default: 2
 runs:
   using: composite
   steps:
@@ -16,6 +24,17 @@ runs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 2
+    - name: Cache Deno dependencies
+      if: ${{ inputs.deno-enabled }}
+      uses: actions/cache@v4
+      with:
+        path: ${{ env.DENO_DIR }}
+        key: ${{ hashFiles('deno.lock') }}
+    - name: Install deno
+      if: ${{ inputs.deno-enabled }}
+      uses: denoland/setup-deno@v2
+      with:
+        deno-version: v${{ inputs.deno-version }}.x
     - name: Setup pnpm
       uses: pnpm/action-setup@v3
       with:
