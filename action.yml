@@ -10,7 +10,7 @@ inputs:
     required: false
     default: 9
   deno-enabled:
-    description: Deno enabled
+    description: Deno enabled, set env.DENO_DIR to deno_cache
     required: false
     default: false
   deno-version:
@@ -28,7 +28,7 @@ runs:
       if: ${{ inputs.deno-enabled }}
       uses: actions/cache@v4
       with:
-        path: ${{ env.DENO_DIR }}
+        path: deno_cache
         key: ${{ hashFiles('deno.lock') }}
     - name: Install deno
       if: ${{ inputs.deno-enabled }}
