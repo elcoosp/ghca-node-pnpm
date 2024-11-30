@@ -17,8 +17,6 @@ inputs:
     description: Deno version
     required: false
     default: 2
-env:
-  DEPS_CACHE_LOCKFILE: ${{ inputs.deno-enabled && 'deno.lock' || 'pnpm-lock.yaml' }}
 runs:
   using: composite
   steps:
@@ -26,11 +24,12 @@ runs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 2
-    - name: Cache lockfile
+    - name: Cache Deno dependencies
+      if: ${{ inputs.deno-enabled == true }}
       uses: actions/cache@v4
       with:
         path: deno_cache
-        key: ${{  hashFiles(env.DEPS_CACHE_LOCKFILE) }}
+        key: ${{ hashFiles('deno.lock') }}
     - name: Install deno
       if: ${{ inputs.deno-enabled }}
       uses: denoland/setup-deno@v2
