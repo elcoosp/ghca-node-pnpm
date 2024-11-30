@@ -29,7 +29,7 @@ runs:
       uses: actions/cache@v4
       with:
         path: deno_cache
-        key: ${{ inputs.deno-enabled && hashFiles('deno.lock') || "no-deno" }}
+        key: ${{  hashFiles(inputs.deno-enabled && 'deno.lock' || 'pnpm-lock.yaml')}}
     - name: Install deno
       if: ${{ inputs.deno-enabled }}
       uses: denoland/setup-deno@v2
