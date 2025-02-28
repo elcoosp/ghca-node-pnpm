@@ -4,11 +4,11 @@ inputs:
   node-version:
     description: Node version
     required: false
-    default: 22
+    default: 23
   pnpm-version:
     description: Pnpm version
     required: false
-    default: 9
+    default: 10
   deno-enabled:
     description: Deno enabled, set env.DENO_DIR to deno_cache
     required: false
