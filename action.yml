@@ -36,7 +36,7 @@ runs:
       with:
         deno-version: v${{ inputs.deno-version }}.x
     - name: Setup pnpm
-      uses: pnpm/action-setup@v3
+      uses: pnpm/action-setup@v4
       with:
         version: ${{ inputs.pnpm-version }}
     - name: Setup node.js environment
