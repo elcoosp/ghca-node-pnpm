@@ -8,7 +8,7 @@ inputs:
   pnpm-version:
     description: Pnpm version
     required: false
-    default: "10.19.0"
+    default: "10.20.0"
   deno-enabled:
     description: Deno enabled, set env.DENO_DIR to deno_cache
     required: false
