@@ -4,7 +4,7 @@ inputs:
   node-version:
     description: Node version
     required: false
-    default: "23"
+    default: "24"
   pnpm-version:
     description: Pnpm version
     required: false
